@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 import axios from "axios";
 import './App.css';
+
+import HomePage from './Pages/homePage';
+import SignIn from './Pages/signIn';
+import SignUp from './Pages/signUp';
+import Features from './Pages/features';
+import Feed from './Pages/feed';
+import History from './Pages/history';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -14,11 +22,19 @@ function App() {
       console.error('There was an error fecthng the data!', error);
     });
   }, []);
+
+
   return (
-    <div >
-      <h1 className='text-black'>hello world!</h1>
-     <p>{message}</p>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='signin' element={<SignIn />} />
+        <Route path='signup' element={<SignUp />} />
+        <Route path='features' element={<Features />} />
+        <Route path='history' element={<History />} />
+        <Route path='feed' element={<Feed />} />
+      </Routes>
+    </Router>
   );
 }
 
