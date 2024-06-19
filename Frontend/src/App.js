@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
-import axios from "axios";
+//import axios from "axios";
 import './App.css';
 
 import HomePage from './Pages/homePage';
@@ -11,17 +11,9 @@ import Feed from './Pages/feed';
 import History from './Pages/history';
 
 function App() {
-  const [message, setMessage] = useState('');
+  
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/')
-    .then(response => {
-      setMessage(response.data);
-    })
-    .catch(error => {
-      console.error('There was an error fecthng the data!', error);
-    });
-  }, []);
+ 
 
 
   return (

@@ -1,26 +1,20 @@
 import React from "react";
-import securityshield from '../assets/securityshield.png'
+import { NavLink } from "react-router-dom";
+
 import Search from "../components/search";
 import Card from "../components/card";
+import backgroundStyle from "../components/backgroundStyle";
 
 
 function History() {
 
-    const backgroundStyle = {
-        backgroundImage: `url(${securityshield})`,
-        width: '100%',
-        height: '100vh',
-        backgroundPosition: "center",
-        backgroundSize: 'cover',
-        backgroundColor: '#1C2031'
-    }
     return(
         <div style = {backgroundStyle} className="text-white" >
            <nav className="flex shadow-xl pb-2">
-                <div className="flex text-[40px] gap-8 pt-4 pl-48">
-                    <h1 className=" font-extralight">Home</h1>
+                <div className="flex flex-col md:flex-row text-2xl md:text-3xl  justify-center gap-3 md:gap-8 p-3 items-center w-[80%] mx-auto">
+                    <NavLink to='/' className=" font-extralight">Home</NavLink>
                    <Search />
-                   <h1 className=" font-extralight">Features</h1>
+                   <NavLink to='/features' className=" font-extralight">Features</NavLink>
                    <h1>History</h1>
                    
                 </div>

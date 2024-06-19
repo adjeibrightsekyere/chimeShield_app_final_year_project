@@ -10,10 +10,10 @@ function Search() {
     }
     return (
         <div>
-            <div className='flex rounded-[30px] relative'>
-                <FaSearch  className='absolute left-20 bottom-4' />
+            <div className='flex rounded-3xl  relative'>
+                <FaSearch  className='absolute left-9 top-7 md:left-20 md:bottom-4' />
                 <input
-                    className='border border-[#0E7443] rounded-[30px] w-[465px] h-[70px] bg-[#1C2031] text-2xl font-extralight text-center focus:outline-none'
+                    className='border border-[#0E7443] rounded-3xl w-80 md:w-[465px] h-[70px] bg-[#1C2031] text-2xl font-extralight text-center focus:outline-none'
                     placeholder='search by date...'
                     value={input}
                     onChange={(e) => handleChange(e.target.value)}
