@@ -9,6 +9,7 @@ import SignUp from './Pages/signUp';
 import Features from './Pages/features';
 import Feed from './Pages/feed';
 import History from './Pages/history';
+import Contact from './Pages/contact';
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
         <Route path='features' element={<Features />} />
         <Route path='history' element={<History />} />
         <Route path='feed' element={<Feed />} />
+        <Route path='contact' element={<Contact />} />
       </Routes>
     </Router>
   );

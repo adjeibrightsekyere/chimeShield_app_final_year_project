@@ -20,7 +20,7 @@ function HomePage() {
 
     return (
         <div style={backgroundStyle} className=' h-screen relative'>
-            <nav className='flex justify-center shadow-xl pb-10 relative z-10'>
+            <nav className='flex justify-center font-roboto shadow-xl pb-10 relative z-10'>
 
                 <img
                     className=' w-20 h-20 absolute left-9 bottom-3'
@@ -52,48 +52,37 @@ function HomePage() {
                 <NavLink
                     className="text-2xl md:text-4xl font-bold border border-[#0E7443] bg-[#0E7443] rounded-lg w-48 h-16 text-center pt-1 "
                     to="/signin">Sign In</NavLink>
-                <div className='cursor-pointer flex text-1xl md:text-3xl  font-normal md:gap-x-5 pl-2 gap-x-1 md:pl-16 border border-[#0E7443] bg-[#0E7443] rounded-3xl w-80 md:w-[700px] h-14 md:h-16 items-center'>
+                <div className='cursor-pointer font-roboto-slab flex text-1xl md:text-3xl  font-normal md:gap-x-5 pl-2 gap-x-1 md:pl-9 border border-[#0E7443] bg-[#0E7443] rounded-3xl w-80 md:w-[700px] h-14 md:h-16 items-center'>
                     <h1
                         onClick={() => handleShowModal(
                             'Privacy Policy',
                             `
-                            1. Introduction{<br/>}
+                            1. Introduction<br/>
 
-                                Welcome to ChimeShield. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner.{<br/>}
+                                Welcome to ChimeShield. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner.<br/>
 
-                            2. Information We Collect
+                            2. Information We Collect:<br/>
 
-                                Personal Information: We may collect personal information such as your name, email address, and contact details when you sign up for our services.
-                                Usage Data: We collect data on how you use our app, including but not limited to, your interactions and activities within the app.
-                            3. How We Use Your Information
+                                Personal Information,We may collect personal information such as your name, email address, and contact details when you sign up for our services.<br/>
+                               
+                            3. How We Use Your Information<br/>
 
-                                We use the information we collect to:
+                                We use the information we collect to:<br/>
+                                Provide and maintain our services<br/>
+                                Improve and personalize your experience<br/>
+                                
+                                Ensure the security and integrity of our app<br/>
+                            4. Sharing Your Information<br/>
 
-                                Provide and maintain our services
-                                Improve and personalize your experience
-                                Communicate with you about updates and offers
-                                Ensure the security and integrity of our app
-                            4. Sharing Your Information
+                                We do not sell or share your personal information with third parties except to:<br/>
 
-                                We do not sell or share your personal information with third parties except to:
-
-                                Comply with legal obligations
-                                Protect and defend our rights and property
-                                Improve our service with trusted partners under strict confidentiality agreements
-                            5. Security
+                                Comply with legal obligations<br/>
+                                Protect and defend our rights and property<br/>
+                                
+                            5. Security<br/>
 
                                 We implement robust security measures to protect your personal information. However, no method of transmission over the internet is 100% secure.
-
-                            6. Changes to This Policy
-
-                                We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
-
-                            7. Contact Us
-
-                                If you have any questions or concerns about our Privacy Policy, 
-                                please contact us at support@chimeshield.com.
-
-
+                            
                             `
                         )}
                     >
@@ -102,12 +91,24 @@ function HomePage() {
                     <h1
                         onClick={() => handleShowModal(
                             'Terms of service',
-                            'content goes here'
+                            `
+                              <h2>1. Acceptance of Terms</h2>
+                                <p>By accessing and using our services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+                                <h2>2. Use of Our Service</h2>
+                                <p>You must follow any policies made available to you within the services. Do not misuse our services. For example, do not interfere with our services or try to access them using a method other than the interface and the instructions that we provide.</p>
+                               
+                                <h2>7. Limitation of Liability</h2>
+                                <p>To the extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenues.</p>
+                                <h2>8. Changes to Terms</h2>
+                                <p>We may modify these terms at any time. We will notify you of changes by posting the new terms on our website. Your continued use of the services constitutes your acceptance of the modified terms.</p>
+                               
+                            
+                            `
                         )}
                     >
                         Terms of service
                     </h1>
-                    <h1>Contact Us</h1>
+                    <NavLink to='/contact' >Contact Us</NavLink>
                 </div>
 
             </div>
@@ -118,7 +119,7 @@ function HomePage() {
                 className='absolute top-36 right-36 h-96 opacity-20 z-0' />
 
             <Modal show={showModal} onClose={handleCloseModal} title={modalContent.title}>
-            <div dangerouslySetInnerHTML={{ __html: modalContent.content }} />
+                <div dangerouslySetInnerHTML={{ __html: modalContent.content }} />
             </Modal>
         </div>
     )
