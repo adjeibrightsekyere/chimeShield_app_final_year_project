@@ -114,7 +114,7 @@ function HomePage() {
             </div>
 
             <img
-                src='/assets/police.png'
+                src='/assets/police-bg.png'
                 alt=''
                 className='absolute top-36 right-36 h-96 opacity-20 z-0' />
 

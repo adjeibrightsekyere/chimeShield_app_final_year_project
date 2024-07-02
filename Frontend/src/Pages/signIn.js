@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-
+import axios from 'axios';
 
 function SignIn() {
-    const [values, setValues] = useState({
-        username: '',
-        password: ''
-    });
+    const [username, setUsername] = useState()
+    const [password, setPassword] = useState()
+    const navigate = useNavigate()
 
-    function handleChange(e) {
-        setValues({ ...values, [e.target.name]: e.target.value })
-    }
+    
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("form submitted", values)
+        axios.post('http://localhost:5000/signin', {username, password})
+        .then(result => {
+            console.log(result)
+            if(result.data === "success") {
+                navigate('/features')
+            }
+            
+        })
+        .catch(err => console.log(err))
     }
     return (
-        <div className='h-screen overflow-hidden flex flex-col'>
+        <div className='h-screen bg-[#1C2031] overflow-hidden flex flex-col'>
             <div className=' grid grid-cols-2'>
-                <div className=''>
+                <div className='hidden md:block'>
                     <img
                         className=''
                         src='/assets/login.png' alt='login' />
                 </div>
                 <div className='flex bg-[#1C2031]'>
-                    <div className='flex pl-40 pt-24 text-white '>
+                    <div className='flex md:pl-40 md:pt-24 pt-16 text-white '>
                         <form onSubmit={handleSubmit} className='flex flex-col  pl-12  '>
                             <h1 className=' text-4xl font-bold '>Welcome Back!</h1>
                             <div className='flex gap-5 mt-2'>
@@ -41,9 +46,8 @@ function SignIn() {
                                         type='text'
                                         placeholder='kwesman...'
                                         name='username'
-                                        value={values.username}
-                                        onChange={handleChange}
-                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
+                                        onChange={(e) => setUsername(e.target.value)}
+                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl focus:outline-none ' />
                                 </div>
                                 <label className=' text-base font-medium '>PASSWORD</label>
                                 <div className='flex border-2 w-80 h-16 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5  items-center pl-5 gap-3'>
@@ -52,8 +56,7 @@ function SignIn() {
                                         type='password'
                                         placeholder='********'
                                         name='password'
-                                        value={values.password}
-                                        onChange={handleChange}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
                                 </div>
                                 <div className='flex mt-5 gap-10 text-base font-extralight cursor-pointer'>
