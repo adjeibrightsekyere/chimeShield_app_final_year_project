@@ -19,21 +19,19 @@ function HomePage() {
     }
 
     return (
-        <div style={backgroundStyle} className=' h-screen relative'>
-            <nav className='flex justify-center font-roboto shadow-xl pb-10 relative z-10'>
-
+        <div style={backgroundStyle} className='overflow-y-hidden  h-screen'>
+            <nav className='flex items-center justify-between font-roboto shadow-xl pb-10 md:pb-0 md:pt-0   z-10'>
                 <img
-                    className=' w-20 h-20 absolute left-9 bottom-3'
+                    className='hidden md:block w-20 h-20 '
                     src='/assets/logo.png' alt='logo' />
-                <div className='flex flex-row text-white text-2xl md:text-3xl mx-auto items-center  justify-center gap-2 md:gap-9 p-3'>
+                <div className='flex flex-row text-white text-2xl md:text-3xl mx-auto  items-center justify-center gap-2 md:gap-9  '>
                     <NavLink className="" to='/'>Home</NavLink>
                     <NavLink className="" to='/features'>Features</NavLink>
                     <NavLink className="" to='/history'>History</NavLink>
                 </div>
-                <NavLink to='/signup' className="border border-[#0E7443] bg-[#0E7443] w-24 h-12 absolute top-2 right-2 md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg md:absolute md:right-8 md:bottom-4 text-1xl md:text-2xl text-center pt-3 text-white">SIGN UP</NavLink>
-
+                <NavLink to='/signup' className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">SIGN UP</NavLink>
             </nav>
-            <div className='flex flex-col text-white font-roboto gap-y-5 md:gap-y-10 pl-10 pt-10'>
+            <div className='flex flex-col text-white font-roboto gap-y-8 md:gap-y-10 pl-10 pt-12 md:pt-6'>
                 <div className='text-3xl md:text-5xl font-bold font-roboto'>
                     <h1>Welcome to the</h1>
                     <div className='flex gap-2 '>
@@ -50,9 +48,9 @@ function HomePage() {
                     <h1 className=' text-1xl md:text-2xl font-extralight'>Sign in to access your dashboard and live feed</h1>
                 </div>
                 <NavLink
-                    className="text-2xl md:text-4xl font-bold border border-[#0E7443] bg-[#0E7443] rounded-lg w-48 h-16 text-center pt-1 "
+                    className="text-2xl md:text-4xl  font-bold border border-[#0E7443] bg-[#0E7443] md:rounded-lg w-80 md:w-48 h-16 text-center pt-3 md:pt-1 "
                     to="/signin">Sign In</NavLink>
-                <div className='cursor-pointer font-roboto-slab flex text-1xl md:text-3xl  font-normal md:gap-x-5 pl-2 gap-x-1 md:pl-9 border border-[#0E7443] bg-[#0E7443] rounded-3xl w-80 md:w-[700px] h-14 md:h-16 items-center'>
+                <div className='cursor-pointer font-roboto-slab flex text-1xl md:text-3xl  font-normal md:gap-x-5 pl-2 gap-x-1 md:pl-9 border border-[#0E7443] bg-[#0E7443] md:rounded-3xl w-80 md:w-[700px] h-14 md:h-16 items-center'>
                     <h1
                         onClick={() => handleShowModal(
                             'Privacy Policy',
@@ -116,7 +114,7 @@ function HomePage() {
             <img
                 src='/assets/police-bg.png'
                 alt=''
-                className='absolute top-36 right-36 h-96 opacity-20 z-0' />
+                className='hidden md:block absolute top-36 right-36 h-96 opacity-20 z-0' />
 
             <Modal show={showModal} onClose={handleCloseModal} title={modalContent.title}>
                 <div dangerouslySetInnerHTML={{ __html: modalContent.content }} />

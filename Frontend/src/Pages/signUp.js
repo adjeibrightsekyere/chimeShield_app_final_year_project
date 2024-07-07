@@ -31,7 +31,7 @@ function SignUp() {
                         src='/assets/login.png' alt='login' />
                 </div>
                 <div className='flex bg-[#1C2031]'>
-                    <div className='flex md:pl-40 md:pt-8 pt-16 text-white '>
+                    <div className='flex md:pl-40 md:pt-8 pt-6  text-white '>
                         <form onSubmit={handleSubmit} className='flex flex-col  pl-12  '>
                             <h1 className=' text-4xl font-bold '>Welcome Back!</h1>
 
