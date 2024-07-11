@@ -15,7 +15,7 @@ function Features() {
                     src='/assets/logo.png' alt='logo' />
                 <div className='flex flex-row text-white text-2xl md:text-3xl mx-auto  items-center justify-center gap-2 md:gap-9  '>
                     <NavLink className="" to='/'>Home</NavLink>
-                    <NavLink className="" to='/features'>Features</NavLink>
+                    <NavLink className="underline" to='/features'>Features</NavLink>
                     <NavLink className="" to='/history'>History</NavLink>
                 </div>
                 <NavLink to='/signup' className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">LOG OUT</NavLink>

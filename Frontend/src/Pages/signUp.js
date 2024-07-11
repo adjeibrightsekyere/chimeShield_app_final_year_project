@@ -31,13 +31,13 @@ function SignUp() {
                         src='/assets/login.png' alt='login' />
                 </div>
                 <div className='flex bg-[#1C2031]'>
-                    <div className='flex md:pl-40 md:pt-8 pt-6  text-white '>
+                    <div className='flex md:pl-40 md:pt-4 pt-6  text-white '>
                         <form onSubmit={handleSubmit} className='flex flex-col  pl-12  '>
                             <h1 className=' text-4xl font-bold '>Welcome Back!</h1>
 
-                            <div className='mt-10'>
+                            <div className='mt-10 '>
                                 <label className=' text-base font-medium'>USERNAME</label>
-                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
                                     <img src='/assets/user.png' alt='' className='w-9 h-9' />
                                     <input
                                         type='text'
@@ -47,7 +47,7 @@ function SignUp() {
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl focus:outline-none ' />
                                 </div>
                                 <label className=' text-base font-medium'>EMAIL</label>
-                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
                                     <img src='/assets/user.png' alt='' className='w-9 h-9' />
                                     <input
                                         type='email'
@@ -57,7 +57,7 @@ function SignUp() {
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl focus:outline-none ' />
                                 </div>
                                 <label className=' text-base font-medium '>PASSWORD</label>
-                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
                                         type='password'
@@ -67,7 +67,7 @@ function SignUp() {
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
                                 </div>
                                 <label className=' text-base font-medium '>CONFIRM PASSWORD</label>
-                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
                                         type='password'
@@ -77,9 +77,9 @@ function SignUp() {
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
                                 </div>
 
-                                <div className='relative border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#0E7443] hover:bg-[#44c285] mt-7'>
+                                <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#0E7443] hover:bg-[#0c3f26] mt-7'>
                                     <button type='submit'
-                                        className=' absolute top-2 left-28 text-3xl font-semibold'>
+                                        className=' text-center mx-auto text-2xl font-semibold'>
                                         Sign Up
                                     </button>
                                 </div>

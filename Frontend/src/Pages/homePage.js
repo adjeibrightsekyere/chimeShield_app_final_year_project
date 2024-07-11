@@ -25,7 +25,7 @@ function HomePage() {
                     className='hidden md:block w-20 h-20 '
                     src='/assets/logo.png' alt='logo' />
                 <div className='flex flex-row text-white text-2xl md:text-3xl mx-auto  items-center justify-center gap-2 md:gap-9  '>
-                    <NavLink className="" to='/'>Home</NavLink>
+                    <NavLink className={({isActive}) => (isActive ? ' underline ' : 'no-underline')} to='/'>Home</NavLink>
                     <NavLink className="" to='/features'>Features</NavLink>
                     <NavLink className="" to='/history'>History</NavLink>
                 </div>

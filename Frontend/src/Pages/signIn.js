@@ -40,7 +40,7 @@ function SignIn() {
                             </div>
                             <div className='mt-10'>
                                 <label className=' text-base font-medium'>USERNAME</label>
-                                <div className='flex border-2 w-80 h-16 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
                                     <img src='/assets/user.png' alt='' className='w-9 h-9' />
                                     <input
                                         type='text'
@@ -50,7 +50,7 @@ function SignIn() {
                                         className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl focus:outline-none ' />
                                 </div>
                                 <label className=' text-base font-medium '>PASSWORD</label>
-                                <div className='flex border-2 w-80 h-16 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5  items-center pl-5 gap-3'>
+                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5  items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
                                         type='password'
@@ -66,9 +66,9 @@ function SignIn() {
                                     </label>
                                     <h2>Forgot password?</h2>
                                 </div>
-                                <div className='relative border-2 w-80 h-16 border-[#0E7443] rounded-3xl bg-[#0E7443]  mt-5'>
+                                <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#0E7443] hover:bg-[#0c3f26] mt-5'>
                                     <button type='submit'
-                                        className=' absolute top-2 left-28 text-3xl font-semibold'>
+                                        className='mx-auto  text-3xl font-semibold'>
                                         Login
                                     </button>
                                 </div>
