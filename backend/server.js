@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const DataModel = require("./models/data");
 const EmployeeModel = require('./models/Employee')
+const nodemailer = require('nodemailer');
 
 
 const app = express();
@@ -34,6 +35,16 @@ app.get('/getData', async (req,res) => {
    }
 })
 
+app.get('/search', async (req, res) => {
+    const { date } = req.query;
+    try {
+        const data = await DataModel.find({ date: date });
+        res.json(data); 
+    } catch (err) {
+        res.status(500).json({ error: err.messsage});
+    }
+})
+
 app.post('/signin', (req, res) => {
     const {username, password} = req.body;
     EmployeeModel.findOne({username: username})
@@ -56,6 +67,37 @@ app.post('/signup', (req, res) => {
     .catch(err => res.json(err))
 })
 
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user:'paakwasisensor@gmail.com',
+        pass: 'paasensor'
+    }
+});
+app.post('/contact', (req, res) => {
+    const {first, last, email, phone, message } = req.body;
+   
+    if (!first || !last || !email || !phone || !message) {
+        return res.status(400).json({ error: 'All fields are required'});
+    }
+
+    const mailOptions = {
+        from: email,
+        to: 'paakwasisensor@gmail.com',
+        subject: `Contact Form Submission from ${first} ${last}`,
+        text: `You have a new message from ${first} ${last}.\n\nContact Details:\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`
+        
+    };
+
+    transporter.sendMail(mailOptions, (error,info) => {
+        if(error) {
+            console.log('Error sending email:', error);
+            return res.status(500).json({ error: 'Failed to send message'});
+        }
+        console.log('Email sent successfully:', info.response)
+        res.status(200).json({ message: 'Message sent successfully'});
+    });
+});
 
 
 app.listen(PORT, () => {
