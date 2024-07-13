@@ -58,10 +58,10 @@ function Contact() {
                 <NavLink to='/signup' className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">LOG OUT</NavLink>
             </nav>
             <div className="flex  w-[80%] h-[70%] m-auto mt-24">
-                <div className=" w-[40%] h-[100%]">
+                <div className="bg-white opacity-50 w-[40%] h-[100%] ">
                     <img
-                        className="h-full w-full"
-                        src="/assets/contactUs.jpeg" alt="" />
+                        className="hidden md:block mt-20 "
+                        src="/assets/log-img.png" alt="" />
                 </div>
                 <div className=" overflow-hidden w-[60%] h-[100%]  bg-[#1C2031]">
                     <form onSubmit={handleSubmit} className="grid grid-cols-2 m-3 gap-x-5 ">

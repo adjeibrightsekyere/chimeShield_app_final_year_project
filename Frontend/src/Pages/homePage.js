@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import backgroundStyle from '../components/backgroundStyle';
 import Modal from '../components/modal';
+import LogOut from '../components/logOut';
 
 
 
 function HomePage() {
     const [showModal, setShowModal] = useState(false);
     const [modalContent, setModalContent] = useState({ title: '', content: '' });
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        setIsLoggedIn(user !== null);
+    }, []);
 
     const handleShowModal = (title, content) => {
         setModalContent({ title, content });
@@ -18,6 +26,8 @@ function HomePage() {
         setShowModal(false);
     }
 
+    
+
     return (
         <div style={backgroundStyle} className='overflow-y-hidden  h-screen'>
             <nav className='flex items-center justify-between font-roboto shadow-xl pb-10 md:pb-0 md:pt-0   z-10'>
@@ -25,11 +35,18 @@ function HomePage() {
                     className='hidden md:block w-20 h-20 '
                     src='/assets/logo.png' alt='logo' />
                 <div className='flex flex-row text-white text-2xl md:text-3xl mx-auto  items-center justify-center gap-2 md:gap-9  '>
-                    <NavLink className={({isActive}) => (isActive ? ' underline ' : 'no-underline')} to='/'>Home</NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? ' underline ' : 'no-underline')} to='/'>Home</NavLink>
                     <NavLink className="" to='/features'>Features</NavLink>
                     <NavLink className="" to='/history'>History</NavLink>
                 </div>
-                <NavLink to='/signup' className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">SIGN UP</NavLink>
+                {isLoggedIn ? null
+                 : (
+                    <NavLink
+                        to='/signup'
+                        className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">
+                        SIGN UP
+                    </NavLink>
+                )}
             </nav>
             <div className='flex flex-col text-white font-roboto gap-y-8 md:gap-y-10 pl-10 pt-12 md:pt-6'>
                 <div className='text-3xl md:text-5xl font-bold font-roboto'>
@@ -47,9 +64,15 @@ function HomePage() {
                 <div>
                     <h1 className=' text-1xl md:text-2xl font-extralight'>Sign in to access your dashboard and live feed</h1>
                 </div>
+               { isLoggedIn ? (
+                 <LogOut />
+               ): (
                 <NavLink
                     className="text-2xl md:text-4xl  font-bold border border-[#0E7443] bg-[#0E7443] md:rounded-lg w-80 md:w-48 h-16 text-center pt-3 md:pt-1 "
-                    to="/signin">Sign In</NavLink>
+                    to="/signin">
+                    Sign In
+                </NavLink>
+            )}
                 <div className='cursor-pointer font-roboto-slab flex text-1xl md:text-3xl  font-normal md:gap-x-5 pl-2 gap-x-1 md:pl-9 border border-[#0E7443] bg-[#0E7443] md:rounded-3xl w-80 md:w-[700px] h-14 md:h-16 items-center'>
                     <h1
                         onClick={() => handleShowModal(

@@ -6,9 +6,16 @@ import axios from 'axios';
 function SignIn() {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [keepLoggedIn, setKeepLoggedIn] = useState(false);
     const navigate = useNavigate()
 
-    
+    const handleToggleVisibility = (field) => {
+        if(field === 'password') {
+            setPasswordVisible(!passwordVisible);
+        }
+        
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -16,6 +23,9 @@ function SignIn() {
         .then(result => {
             console.log(result)
             if(result.data === "success") {
+                if (keepLoggedIn) {
+                    localStorage.setItem('user', JSON.stringify({ username }));
+                }
                 navigate('/features')
             }
             
@@ -25,10 +35,10 @@ function SignIn() {
     return (
         <div className='h-screen bg-[#1C2031] overflow-hidden flex flex-col'>
             <div className=' grid grid-cols-2'>
-                <div className='hidden md:block'>
+                <div className='hidden md:block '>
                     <img
                         className=''
-                        src='/assets/login.png' alt='login' />
+                        src='/assets/signIIn.jpg' alt='login' />
                 </div>
                 <div className='flex bg-[#1C2031]'>
                     <div className='flex md:pl-40 md:pt-24 pt-16 text-white '>
@@ -53,15 +63,18 @@ function SignIn() {
                                 <div className='flex border-2 w-80 h-14 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5  items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
-                                        type='password'
+                                        type={passwordVisible ? 'text' : 'password'}
                                         placeholder='********'
                                         name='password'
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
+                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' 
+                                        
+                                    />
+                                    <img src='/assets/eye.png' alt='' onClick={() => handleToggleVisibility('password')} className='mr-2' />
                                 </div>
                                 <div className='flex mt-5 gap-10 text-base font-extralight cursor-pointer'>
                                     <label className=' flex gap-2'>
-                                        <input type='checkbox' />
+                                        <input type='checkbox' onChange={(e) => setKeepLoggedIn(e.target.checked)} />
                                         <span className=''>Keep me logged in</span>
                                     </label>
                                     <h2>Forgot password?</h2>

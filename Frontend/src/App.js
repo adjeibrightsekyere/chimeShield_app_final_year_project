@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Navigate,} from 'react-router-dom';
 //import axios from "axios";
 import './App.css';
 
@@ -13,17 +13,17 @@ import Contact from './Pages/contact';
 
 function App() {
   
-
- 
-
+    const isUserLoggedIn = () => {
+      return localStorage.getItem('user') !== null;
+    };
 
   return (
     <Router>
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='signin' element={<SignIn />} />
+        <Route path='signin' element={isUserLoggedIn() ? <Navigate to="/features" /> : <SignIn />} />
         <Route path='signup' element={<SignUp />} />
-        <Route path='features' element={<Features />} />
+        <Route path='features' element={isUserLoggedIn ? <Features /> : <Navigate to="/signin" />} />
         <Route path='history' element={<History />} />
         <Route path='feed' element={<Feed />} />
         <Route path='contact' element={<Contact />} />

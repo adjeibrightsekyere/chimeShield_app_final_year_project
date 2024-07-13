@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import backgroundStyle from "../components/backgroundStyle";
 import Items from "../components/FeatureItems";
+import LogOut from "../components/logOut";
 
 
 
 function Features() {
+    
 
     return (
         <div style={backgroundStyle} className="md:h-screen">
@@ -18,7 +20,7 @@ function Features() {
                     <NavLink className="underline" to='/features'>Features</NavLink>
                     <NavLink className="" to='/history'>History</NavLink>
                 </div>
-                <NavLink to='/signup' className="hidden md:block border border-[#0E7443] bg-[#0E7443] w-24 h-12  md:w-36 md:h-16 font-bold rounded-2xl md:rounded-lg  text-1xl md:text-2xl text-center pt-3 text-white">LOG OUT</NavLink>
+                < LogOut />
             </nav>
             <div className="body flex flex-col  ">
                 <div className="paragraph flex  justify-center mt-10">
@@ -41,19 +43,19 @@ function Features() {
                         h1='Live'
                         h2='video'
                         h3='feed'
-                        
+
                     />
                     <Items
                         img='/assets/history.png'
                         h1='Activity'
                         h2='history'
                         to='/history'
-                        
+
                     />
                     <Items
                         img='/assets/notification.png'
                         h1='Notifications'
-                        
+
                     />
                 </div>
 

@@ -9,19 +9,34 @@ function SignUp() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
+    const [passwordVisible, setPasswordVisible] = useState(false)
+    const [confirmPasswordVisble, setConfirmPasswordVisible] = useState(false)
     const navigate = useNavigate()
 
+    const handleToggleVisibility = (field) => {
+        if (field === "password") {
+            setPasswordVisible(!passwordVisible);
+        } else if (field === 'confirmPassword') {
+            setConfirmPasswordVisible(!confirmPasswordVisble)
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
         axios.post('http://localhost:5000/signup', { username, email, password, confirmPassword })
-            .then(result => {console.log(result)
-            navigate('/signin')
+            .then(result => {
+                console.log(result)
+                navigate('/signin')
             })
             .catch(err => console.log(err))
 
 
     }
+
     return (
         <div className='h-screen bg-[#1C2031] overflow-hidden flex flex-col'>
             <div className=' grid grid-cols-2'>
@@ -60,21 +75,35 @@ function SignUp() {
                                 <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 mb-5 items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
-                                        type='password'
+                                        type={passwordVisible ? 'text' : 'password'}
                                         placeholder='********'
                                         name='password'
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
+                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl'
+                                    />
+                                    <img
+                                        onClick={() => handleToggleVisibility('password')}
+                                        src='/assets/eye.png'
+                                        alt=''
+                                        className='mr-2'
+                                    />
                                 </div>
                                 <label className=' text-base font-medium '>CONFIRM PASSWORD</label>
                                 <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#1C2031] mt-5 items-center pl-5 gap-3'>
                                     <img src='/assets/lock.png' alt='' className='w-9 h-9 bg-[#1C2031]' />
                                     <input
-                                        type='password'
+                                        type={ confirmPasswordVisble ? 'text' : 'password'}
                                         placeholder='********'
                                         name='confirmPassword'
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl' />
+                                        className='text-black w-full h-full bg-[#1C2031] outline-none rounded-3xl'
+                                    />
+                                    <img
+                                        onClick={() => handleToggleVisibility('confirmPassword')}
+                                        src='/assets/eye.png'
+                                        alt=''
+                                        className='mr-2'
+                                    />
                                 </div>
 
                                 <div className='flex border-2 w-80 h-12 border-[#0E7443] rounded-3xl bg-[#0E7443] hover:bg-[#0c3f26] mt-7'>
