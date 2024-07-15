@@ -74,7 +74,7 @@ function Contact() {
                                     placeholder="Bright"
                                     value={values.first}
                                     onChange={handleChange}
-                                    className="flex w-full h-full rounded-3xl ml-8 outline-none bg-[#1C2031] text-white text-opacity-50 font-serif "
+                                    className=" w-full h-full rounded-3xl text-center  outline-none bg-[#1C2031] text-white text-opacity-50 font-serif "
                                 />
                             </div>
                         </div>
@@ -87,7 +87,7 @@ function Contact() {
                                     value={values.last}
                                     onChange={handleChange}
                                     placeholder="Adjei"
-                                    className="flex w-full h-full rounded-3xl ml-8 outline-none bg-[#1C2031] text-white text-opacity-50 font-serif "
+                                    className=" w-full h-full rounded-3xl text-center outline-none bg-[#1C2031] text-white text-opacity-50 font-serif "
                                 />
                             </div>
                         </div>
@@ -100,7 +100,7 @@ function Contact() {
                                     value={values.email}
                                     onChange={handleChange}
                                     placeholder="kwesman@gmail.com"
-                                    className="flex w-full h-full rounded-3xl ml-8 outline-none bg-[#1C2031] text-white text-opacity-50 font-serif"
+                                    className=" w-full h-full rounded-3xl text-center outline-none bg-[#1C2031] text-white text-opacity-50 font-serif"
                                 />
                             </div>
                         </div>
@@ -113,7 +113,7 @@ function Contact() {
                                     value={values.phone}
                                     onChange={handleChange}
                                     placeholder="+233502052267"
-                                    className=" w-full h-full rounded-3xl outline-none ml-8 bg-[#1C2031] text-white text-opacity-50 font-serif"
+                                    className=" w-full h-full rounded-3xl outline-none text-center bg-[#1C2031] text-white text-opacity-50 font-serif"
                                 />
                             </div>
                         </div>
@@ -126,7 +126,7 @@ function Contact() {
                                     value={values.message}
                                     onChange={handleChange}
                                     placeholder="Bright"
-                                    className="flex w-full h-full rounded-3xl mx-auto pt-4 outline-none bg-[#1C2031] text-white text-opacity-50  "
+                                    className=" w-full h-full rounded-3xl text-left pt-4 outline-none bg-[#1C2031] text-white text-opacity-50  "
                                 />
                             </div>
                         </div>

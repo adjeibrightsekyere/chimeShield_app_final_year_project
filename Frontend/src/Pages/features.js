@@ -43,7 +43,7 @@ function Features() {
                         h1='Live'
                         h2='video'
                         h3='feed'
-
+                        to='/feed'
                     />
                     <Items
                         img='/assets/history.png'

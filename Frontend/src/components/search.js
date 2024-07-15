@@ -1,54 +1,49 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import {FaSearch} from 'react-icons/fa'
+import React, {  useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa'
 
 
-function Search() {
+function Search({ onSearchResults, initialData }) {
 
     const [date, setDate] = useState('')
-    const [results, setResults] = useState([]);
+
+    useEffect(() => {
+        if (!date) {
+            onSearchResults(initialData);
+        }
+    }, [date, initialData, onSearchResults])
+
     
-    const handleSearch = async () => {
-      
+
+    const handleSearch = async (e) => {
+        const inputValue = e.target.value;
+        setDate(inputValue);
+        if (inputValue ==='') {
+            onSearchResults(initialData);
+            return;
+        }
+
         try {
-            const response = await axios.get('http://localhost:5000/search', { params: {date} });
-            setResults(response.data);
+            const response = await axios.get('http://localhost:5000/search', { params: { date: inputValue } });
+            onSearchResults(response.data);
         } catch (error) {
-            console.error('Error faetching data:', error);
+            console.error('Error fetching data:', error);
         }
     }
-    
+
     return (
         <div>
-            <div onClick={handleSearch} className='flex rounded-3xl  relative'>
-                <FaSearch  className='absolute left-9 top-7 md:left-20 md:bottom-4' />
+            <div onClick={handleSearch} className='flex border border-[#0E7443] rounded-3xl w-80  h-12  bg-[#1C2031] justify-center items-center '>
+                <FaSearch className='' />
                 <input
-                    className='border border-[#0E7443] rounded-3xl w-80 md:w-[465px] h-16 md:h-[70px] bg-[#1C2031] text-2xl font-extralight text-center focus:outline-none'
-                    placeholder='search DD/MM/YYYY...'
+                    className='bg-[#1C2031] text-xl font-extralight text-center focus:outline-none'
+                    placeholder=' DD/MM/YYYY...'
                     type='text'
                     value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    onKeyPress={(e) => {
-                        if(e.key === 'Enter') {
-                            handleSearch();
-                        }
-                    }}
-                    onBlur={handleSearch}
-                />
+                    onChange={handleSearch}
 
+                />
             </div>
-            <div className="results">
-                {results.map((result, index) => (
-                    <div key={index} className="result-item">
-                        <p>Date: {new Date(result.date).toLocaleDateString()}</p>
-                        <p>Time: {result.time}</p>
-                        <p>Item: {result.item}</p>
-                        <p>Duration: {result.duration}</p>
-                        {/* Render other fields as needed */}
-                    </div>
-                ))}
-            </div>
-            
         </div>
     )
 }
