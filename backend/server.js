@@ -38,8 +38,8 @@ app.get('/getData', async (req,res) => {
 app.get('/search', async (req, res) => {
     const { date } = req.query;
     try {
-        const data = await DataModel.find({ date: date });
-        res.json(data); 
+        const results = await DataModel.find({ date: { $regex: new RegExp(`^${date}`), $options: 'i'} });
+        res.json(results); 
     } catch (err) {
         res.status(500).json({ error: err.messsage});
     }
@@ -71,7 +71,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user:'paakwasisensor@gmail.com',
-        pass: 'paasensor'
+        pass: 'dtdj kwkk rpjl jawh'
     }
 });
 app.post('/contact', (req, res) => {
